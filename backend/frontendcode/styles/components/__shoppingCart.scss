@@ -1,0 +1,83 @@
+// mobile styles
+@media (max-width: 414px){
+    .table-xs {
+          // reset everything
+          tr,
+          td,
+          tbody,
+          thead,
+          tfoot,
+          th
+      {
+              display:table;
+              width:100%;
+        border-collapse:separate; // applies the padding on all cells later (bootstrap .table border collapse reset)
+          }
+      
+          // hide real table headers
+          > tbody tr:first-child{
+              position:absolute;
+              top:-9999px;
+              left:-9999px;
+          }
+      
+      // show table headers from title attribute
+          td[title]:before{
+              content: attr(title) ": ";
+          }
+      // format the faux table headers
+          td:before{
+              white-space:nowrap;
+              width: 50%;
+              display:table-cell;
+              text-align: left;
+        // -- just styling
+        font-weight:bold;
+          }
+      .item-row{
+        td
+        {
+          // remove some borders
+          &:first-child,
+          &:nth-child(2)
+          {
+            border:0 none;
+          }
+        }
+    
+        td:first-child{
+          border:0 none;
+        }
+
+        .image-size{
+            width:50%;
+            height:50%;
+        }
+
+        td:last-child{
+            background: #eee;
+            border-bottom: 2px solid darken(#eee,30%);
+            font-weight: bold;
+        }
+        img{
+          margin-bottom:1em;
+        }
+      }
+      
+      .total-row{
+        td{
+                display:table-cell;
+                  width:1%;
+          
+          // -- just styling
+          border-top:0 none;
+          border-bottom:3px double darken(#eee,30%);
+          font-weight:bold;
+          font-size:1.5em;
+              }
+        td:first-child{
+          width:99%;
+        }
+      }
+    }
+  }

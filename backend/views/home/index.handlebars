@@ -1,0 +1,37 @@
+<div>
+    <h1>Product Details</h1>
+   <form action="/addItem" method="post" enctype="multipart/form-data">
+   <label for="file">Upload</label>
+   <input name="file" type="file" required>
+   <br><br>
+   <input type="text" name="productname" placeholder="Product Name">
+   <br><br>
+   <input type="number" name="amount" placeholder="Amount">
+   <br><br>
+   <label>Select the Size </label>
+   <br>
+   <select name="size" id="size" multiple>
+    <option value="Small">Small</option>
+    <option value="Medium">Medium</option>
+    <option value="Large">Large</option>
+  </select>
+  <br><br>
+     <input type="number" name="SmallSize" placeholder="Small size Quantity">
+  <br><br>
+     <input type="number" name="MediumSize" placeholder="Medium size Quantity">
+  <br><br>
+     <input type="number" name="LargeSize" placeholder="Large Size Quantity">
+ <br><br>
+    <label>Is Available </label><select id="isSold" name="isSold" >
+     <option value="True">True</option>
+    <option value="False">False</option>
+   </select>
+   <br><br>
+   <select id="isTitles" name="isTitles" >
+       <option value="ManProducts">ManProducts</option>
+       <option value="WomenProduct">WomenProducts</option>
+   </select>
+   <br><br>
+   <button type="submit">Submit</button>
+   </form>
+</div>
