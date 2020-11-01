@@ -9,10 +9,13 @@ switch(action.type){
         ]
     
     case 'REMOVE_FROM_CART':
-        return state.filter((cartitems) => cartitems.id !== action.id) 
+        return state.filter((cartitems) => cartitems.id !== action.id);
+    
+    case 'VIEW_THE_CART':
+        return action.cartItems;
     
     case 'SEARCH_THE_ITEM':
-        return state.filter((cartitems)=>cartitems.productname.toLowerCase().includes(action.text.toLowerCase()))   
+        return state.filter((cartitems)=>cartitems.productname.toLowerCase().includes(action.text.toLowerCase()));  
     
     default: 
         return state;

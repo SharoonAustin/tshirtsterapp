@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import {connect} from 'react-redux';
-import {removeFromCart} from '../actions/cart';
+import {startRemoveFromCart} from '../actions/cart';
 
 class Cart extends React.Component{
   state={
@@ -27,7 +27,7 @@ class Cart extends React.Component{
         taxCharges:Math.floor((this.state.totalamount-item.amount)*0.05)
       }
     })
-   this.props.dispatch(removeFromCart(item.id));
+   this.props.dispatch(startRemoveFromCart(item.id));
   }
 
 
@@ -97,7 +97,7 @@ class Cart extends React.Component{
 
 {this.props.items.length>0 &&
   <tr className="total-row info">
-  <Button className="text-right" variant="primary" size="lg">Proceed to Checkout</Button>
+  <td><Button className="text-right" variant="primary" size="lg">Proceed to Checkout</Button></td>
   </tr>
 }
 </tbody>
@@ -112,6 +112,7 @@ const mapStateToProps=((state)=>{
   return{
     items:state
   }
+ 
 });
 
 export default connect(mapStateToProps)(Cart);

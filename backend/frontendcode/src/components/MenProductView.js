@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {addToCart} from '../actions/cart';
+import {startAddToCart} from '../actions/cart';
 import {connect} from 'react-redux';
 
 class MenProductView extends React.Component{
@@ -39,7 +39,7 @@ dispatchTheProduct=()=>{
     const quantity=document.querySelector('#quantityOfTheItem').value;
     const price=this.state.item.amount*quantity
     const newSelection = { ...this.state.item, size:[sizeSelected], amount:price, quantity:quantity}; 
-    this.props.dispatch(addToCart(newSelection))
+    this.props.dispatch(startAddToCart(newSelection))
     }
     
     render(){

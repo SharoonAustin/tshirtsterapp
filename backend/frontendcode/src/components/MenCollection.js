@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {addToCart} from '../actions/cart';
+import {startAddToCart} from '../actions/cart';
 
 class MenCollection extends React.Component{
     state={
@@ -18,7 +18,8 @@ class MenCollection extends React.Component{
     
     dispatchTheProduct=(e)=>{
         const arr={...e,size:['Small'],quantity:1};
-        this.props.dispatch(addToCart(arr))
+        this.props.dispatch(startAddToCart(arr))
+        this.props.history.push('/')
      }
     
     render() {  

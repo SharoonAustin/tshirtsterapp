@@ -20,7 +20,7 @@ app.use(upload())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 mongoose.Promise=global.Promise;
-mongoose.connect('mongodb+srv://mongodbuser:9928530203@cluster0.rdza6.mongodb.net/test',{ useNewUrlParser: true },{ useUnifiedTopology: true },(err,client)=>{
+mongoose.connect('mongodb+srv://mongodbuser:9928530203@cluster0.rdza6.mongodb.net/test',{ useNewUrlParser: true,useUnifiedTopology: true },(err,client)=>{
     console.log('Connected')
 })
 

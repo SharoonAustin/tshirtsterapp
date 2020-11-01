@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
-import {addToCart} from '../actions/cart';
+import {startAddToCart} from '../actions/cart';
 
 
 class WomenCollection extends React.Component{
@@ -19,7 +19,7 @@ class WomenCollection extends React.Component{
 
     dispatchTheProduct=(e)=>{
        const arr={...e,size:['Small'],quantity:1};
-       this.props.dispatch(addToCart(arr))
+       this.props.dispatch(startAddToCart(arr))
     }
     
     render() {
