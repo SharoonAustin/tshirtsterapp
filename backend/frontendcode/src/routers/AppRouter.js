@@ -1,4 +1,5 @@
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
+import {Router, Route, Switch, Link, NavLink} from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory'
 import React from 'react'
 import Header from '../components/Header';
 import DashBoardPage from '../components/Dashboard'
@@ -11,9 +12,11 @@ import MenProductView from '../components/MenProductView'
 import WomenProductView from '../components/WomenProductView'
 import LoginForm from '../components/LoginForm';
 
+export const history= createHistory();
+
 const AppRouter=()=>
     (
-    <BrowserRouter>
+    <Router history={history}>
     <div>
     <Header/>
     <Switch>
@@ -28,6 +31,6 @@ const AppRouter=()=>
     </Switch>
     <Footer/>
     </div>
-    </BrowserRouter>
+    </Router>
 )
  export default AppRouter;
