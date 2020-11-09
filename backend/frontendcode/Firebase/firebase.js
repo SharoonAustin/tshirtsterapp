@@ -14,6 +14,15 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   const database=firebase.database()
 
+  /* database.ref('cartItems').remove()
+  .then(()=>{
+    console.log("Data is deleted")
+  })
+  .catch((e)=>{
+    console.log("Data cannot be deleted")
+  }) */
+
 const googleAuthProvider=new firebase.auth.GoogleAuthProvider();
+
 
 export {firebase, googleAuthProvider, database as default};

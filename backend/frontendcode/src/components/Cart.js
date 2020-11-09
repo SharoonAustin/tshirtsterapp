@@ -2,22 +2,27 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import {connect} from 'react-redux';
 import {startRemoveFromCart} from '../actions/cart';
+import {startLogin} from '../actions/auth';
 
 class Cart extends React.Component{
-  state={
-    totalamount:0,
-    taxCharges:0,
-    shippingCharges:50
-  }
-  componentDidMount(){
+  constructor(props){
+    super(props)
     let amount=0;
-    this.props.items.map((i)=>{
-      amount+=i.amount;
-    })
-
-    let taxCharges=Math.floor(amount*0.05)
-    this.setState(({taxCharges}))
-    this.setState(({totalamount:amount}));
+    let quantity=0;
+        props.items.map((i)=>{
+        quantity=i.quantity;
+        amount+=i.amount;
+      })
+    this.state={
+      totalamount:amount,
+      taxCharges:Math.floor(amount*0.05),
+      shippingCharges:50,
+      status:false
+    }
+  }
+  
+  componentDidMount(){
+    this.setState({status:this.props.uid.uid==undefined?false:true})
   }
 
   removeTheItem=(item)=>{
@@ -32,10 +37,14 @@ class Cart extends React.Component{
 
 
   render(){
-    return(
+    
+    return( 
       <div style={{color:"#007bff"}} className="container">
 <h1>Shopping Cart</h1>
 <br></br>
+{
+this.state.status==true 
+?
 <table className="table table-xs">
 <tbody>
   <tr>
@@ -102,15 +111,21 @@ class Cart extends React.Component{
 }
 </tbody>
 </table>
+:
+<input style={{backgroundColor:"#007bff", color:"white"}} type="button" onClick={()=>{this.props.dispatch(startLogin())}} className="btn" value="Login"></input>
+
+}
 </div>
-    )
+)
+    
   }
 }
 
 
 const mapStateToProps=((state)=>{
   return{
-    items:state.cart
+    items:state.cart,
+    uid:state.auth
   }
  
 });

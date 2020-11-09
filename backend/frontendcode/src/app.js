@@ -5,7 +5,7 @@ import configureStore from './store/configureStore';
 import {startViewTheCart} from './actions/cart'
 import {login,logout} from './actions/auth'
 
-import AppRouter from './routers/AppRouter'
+import AppRouter,{history} from './routers/AppRouter'
 import '../styles/styles.scss';
 import {firebase} from '../Firebase/firebase'
 import Header from './components/Header'
@@ -34,6 +34,7 @@ firebase.auth().onAuthStateChanged((user)=>{
     }
     else{
         store.dispatch(logout());
+        history.push('/');
         ReactDOM.render(<p>Loading...</p>,document.getElementById('app'))
         renderApp();
     }

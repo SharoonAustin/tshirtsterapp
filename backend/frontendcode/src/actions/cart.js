@@ -6,7 +6,8 @@ import database from '../../Firebase/firebase'
       });
       
     export const startAddToCart = (cartData = {}) => {
-        return (dispatch) => {
+        return (dispatch,getState) => {
+          const uid=getState().auth.uid;
           const {
             _id=0,
             image='',
@@ -20,8 +21,7 @@ import database from '../../Firebase/firebase'
             quantity=1} = cartData;
           const expense = {_id, image, productname, amount, size, Small, Medium, Large, isSold, quantity};
          
-
-          return database.ref('cartItems').push(expense).then((ref) => {
+          return database.ref(`cartItems/${uid}`).push(expense).then((ref) => {
             dispatch(addToCart({
                 id: ref.key,
                 ...expense
@@ -38,8 +38,9 @@ export const removeFromCart=(id)=>{
     }
 
 export const startRemoveFromCart=(id)=>{
-  return(dispatch)=>{
-    database.ref(`cartItems/${id}`).remove().then(()=>{
+  return(dispatch,getState)=>{
+    const uid=getState().auth.uid
+    database.ref(`cartItems/${uid}/${id}`).remove().then(()=>{
       dispatch(removeFromCart(id));
     })
   }
@@ -51,8 +52,9 @@ export const viewTheCart=(cartItems)=>({
 })
 
 export const startViewTheCart=()=>{
-    return(dispatch)=>{
-        return database.ref('cartItems').once('value').then((snapshot)=>{
+    return(dispatch,getState)=>{
+        const uid=getState().auth.uid
+        return database.ref(`cartItems/${uid}`).once('value').then((snapshot)=>{
             const cartItems=[];
             snapshot.forEach((childSnapshot) => {
                 cartItems.push({

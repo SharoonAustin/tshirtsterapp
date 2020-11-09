@@ -30,7 +30,7 @@ class Header extends React.Component{
             ?
             <div className="header-button">
             <Button variant="outline-primary" onClick={this.props.startLogin}>Login</Button>{' '}
-            <Button variant="outline-primary"><span className="dot">0</span> Cart</Button>{' '}
+            <Link to="/Cart"><Button variant="outline-primary"><span className="dot">0</span> Cart</Button>{' '}</Link>
             </div>
             :
             <div className="header-button">

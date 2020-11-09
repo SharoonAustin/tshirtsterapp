@@ -1,13 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import {addToCart} from '../actions/cart';
+import {startAddToCart} from '../actions/cart';
 import {connect} from 'react-redux';
+import {history} from '../routers/AppRouter';
+import {startLogin} from '../actions/auth';
 
 class WomenProductView extends React.Component{
 state={
     item:{},
     price:0,
-    quantity:'1'
+    quantity:'1',
+    status:false
 }
 componentDidMount(){
     axios.get(`http://localhost:3000/getWomenData/${this.props.match.params.id}`)
@@ -15,6 +18,7 @@ componentDidMount(){
        this.setState({item:response.data});
        this.setState({price:response.data.amount});
      })
+     this.setState({status:this.props.uid.uid==undefined?false:true})
      }
 
 onQuantity=(e)=>{
@@ -24,7 +28,6 @@ onQuantity=(e)=>{
         this.setState(()=>({price}))
         this.setState(()=>({quantity}))
     }
-    return e.target.value;
 }
 
 dispatchTheProduct=()=>{
@@ -32,7 +35,16 @@ const sizeSelected=document.querySelector('#sizeSelected').value;
 const quantity=document.querySelector('#quantityOfTheItem').value;
 const price=this.state.item.amount*quantity
 const newSelection = { ...this.state.item, size:[sizeSelected], amount:price, quantity:quantity}; 
-this.props.dispatch(addToCart(newSelection))
+this.props.dispatch(startAddToCart(newSelection))
+setTimeout(()=>{history.push('/Cart')}, 400);
+}
+
+dispatchTheProductToCart=()=>{
+const sizeSelected=document.querySelector('#sizeSelected').value;
+const quantity=document.querySelector('#quantityOfTheItem').value;
+const price=this.state.item.amount*quantity
+const newSelection = { ...this.state.item, size:[sizeSelected], amount:price, quantity:quantity}; 
+this.props.dispatch(startAddToCart(newSelection))
 }
 
 render(){
@@ -82,13 +94,26 @@ render(){
                 </ul>
             </div>
         </div>
-        <input style={{backgroundColor:"#007bff", color:"white"}} type="button" onClick={this.dispatchTheProduct} className="btn" value="Buy"></input>
-        &nbsp; &nbsp;
-        <input style={{backgroundColor:"#007bff", color:"white"}} type="button" onClick={this.dispatchTheProduct} className="btn" value="Add to Cart"></input>
-    </div>
+        {this.state.status==false 
+            ?
+            <input style={{backgroundColor:"#007bff", color:"white"}} type="button" onClick={()=>{this.props.dispatch(startLogin())}} className="btn" value="Login"></input>
+            :
+            <div>
+            <input style={{backgroundColor:"#007bff", color:"white"}} type="button" onClick={this.dispatchTheProduct} className="btn" value="Buy"></input>
+            &nbsp; &nbsp;
+            <input style={{backgroundColor:"#007bff", color:"white"}} type="button" onClick={this.dispatchTheProductToCart} className="btn" value="Add to Cart"></input>
+            </div>
+            } 
+        </div>
 </section> 
 )
     }
 }
-export default connect()(WomenProductView)
+const mapStateToProps=((state)=>{
+    return{
+      uid:state.auth
+    }
+  });
+
+export default connect(mapStateToProps)(WomenProductView)
 
