@@ -6,7 +6,7 @@
   "scripts": {
     "run": "live-server --port=9999",
     "start":"node app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontendcode && npm build:prod --prefix frontendcode"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn add --prefix frontendcode && yarn run build:prod --prefix frontendcode"
   },
   "author": "Sharoon Austin",
   "license": "ISC",
