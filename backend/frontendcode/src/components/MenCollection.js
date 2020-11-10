@@ -12,7 +12,7 @@ class MenCollection extends React.Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:3000/getMenData')
+        axios.get('/getMenData')
         .then(response=>{
             this.setState({items:response.data});
         })
