@@ -58,7 +58,7 @@ this.state.status==true
   {this.props.items.map((item,index)=>{
     return(
       <tr key={index} className="item-row">
-    <td> <img style={{width:"100px"}} src={`http://localhost:3000/static/${item.image}`}/></td>
+    <td> <img style={{width:"100px"}} src={`https://tshirtster.herokuapp.com/static/${item.image}`}/></td>
     <td>
       <p> <strong>{item.productname}</strong></p>
       <p>Size: {item.size}</p>
