@@ -15,7 +15,7 @@ state={
 }
 
 componentDidMount(){
-    axios.get(`http://localhost:3000/getMenData/${this.props.match.params.id}`)
+    axios.get(`https://tshirtster.herokuapp.com/getMenData/${this.props.match.params.id}`)
     .then(response=>{
        this.setState({item:response.data});
        this.setState({price:response.data.amount});
@@ -62,7 +62,7 @@ dispatchTheProductToCart=()=>{
          <section className="product">
         <div className="item-image-parent">
             <div className="item-image-main">
-                <img src={`http://localhost:3000/static/${this.state.item.image}`} alt="default"></img>
+                <img src={`https://tshirtster.herokuapp.com/static/${this.state.item.image}`} alt="default"></img>
             </div>
         </div>
     

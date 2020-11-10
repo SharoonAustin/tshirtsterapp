@@ -8,7 +8,7 @@ request.app.locals.layout='home';
 next();
 }) */
 
-router.get('/',(request,response)=>{
+router.get('/addNewItem',(request,response)=>{
     response.render('home/index');
 })
 

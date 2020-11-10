@@ -13,7 +13,7 @@ class WomenCollection extends React.Component{
 
 
     componentDidMount(){
-        axios.get('http://localhost:3000/getWomenData')
+        axios.get('https://tshirtster.herokuapp.com/getWomenData')
         .then(response=>{
             this.setState({items:response.data});
         })
@@ -34,7 +34,7 @@ class WomenCollection extends React.Component{
                 <div key={item._id} className="product-card">
                 <Link to={`/WomenProduct/${item._id}`}>
                 <div className="product-image">
-                  <img src={`http://localhost:3000/static/${item.image}`}></img>
+                  <img src={`https://tshirtster.herokuapp.com/static/${item.image}`}></img>
                 </div>
                 </Link>
                 <div className="product-info">
