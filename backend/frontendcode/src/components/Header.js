@@ -28,13 +28,13 @@ class Header extends React.Component{
             <MenuBar/>
             {this.state.status==false 
             ?
-            <div className="header-button">
-            <Button variant="outline-primary" onClick={this.props.startLogin}>Login</Button>{' '}
-            <Link to="/Cart"><Button variant="outline-primary"><span className="dot">0</span> Cart</Button>{' '}</Link>
+            <div>
+            <Button size="sm" variant="outline-primary" onClick={this.props.startLogin}>Login</Button>{' '}
+            <Link to="/Cart"><Button size="sm" variant="outline-primary"><span className="dot">0</span> Cart</Button>{' '}</Link>
             </div>
             :
-            <div className="header-button">
-            <Button variant="outline-primary" onClick={this.props.startLogout}>Logout</Button>{' '}
+            <div>
+            <Button size="sm" variant="outline-primary" onClick={this.props.startLogout}>Logout</Button>{' '}
             <Link to="/Cart"><Button variant="outline-primary"><span className="dot">{this.props.item.length}</span> Cart</Button>{' '}</Link> 
             </div>
         }

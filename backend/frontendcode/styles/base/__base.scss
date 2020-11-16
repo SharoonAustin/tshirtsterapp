@@ -1,3 +1,22 @@
 body{
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
+
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    cursor:pointer;
+    display:block;
+    width:8px;
+    color: #333;
+    text-align:center;
+    position:relative;
+}    
+input[type=number]:hover::-webkit-inner-spin-button { 
+    background: #eee url('http://i.stack.imgur.com/YYySO.png') no-repeat 50% 50%;  
+    width: 14px;
+    height: 14px;
+    padding: 4px;
+    position: relative;
+    border-radius: 28px;
+}
