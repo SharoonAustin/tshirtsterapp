@@ -6,7 +6,7 @@ const DashBoardPage=()=>(
     <div className="MyDashBoardContainer">
     <Link to="/Men"><img className="MyDashBoardimg" src="/Men.jpg"></img></Link>
     <br></br>
-    <Link to="/Women"><img className="MyDashBoardimg" src="/Women.jpg"></img></Link>
+    <Link to="/Women"><img className="MyDashBoardimg" src="/Women1.jpg"></img></Link>
     </div>
 );
 
