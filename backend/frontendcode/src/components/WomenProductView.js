@@ -27,7 +27,7 @@ onQuantity=(e)=>{
         const price=quantity*this.state.item.amount;
         this.setState(()=>({price}))
         this.setState(()=>({quantity}))
-    }
+}
 }
 
 dispatchTheProduct=()=>{
@@ -82,7 +82,7 @@ render(){
                         
                     </select> 
                     &nbsp; &nbsp;
-                    <input id="quantityOfTheItem" type="number" min="1" max="5" value={this.state.quantity} onChange={this.onQuantity} ></input>
+                    <input id="quantityOfTheItem" pattern="\d*" type="number" min="1" max="5" value={this.state.quantity} onChange={this.onQuantity} ></input>
             </div>
             <br></br>
             <div className="description">

@@ -5,6 +5,20 @@
     width:120px;
 }
 
+.MyDashBoardContainer {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+ 
+.MyDashBoardimg{
+    width: 100%;
+    height: auto;
+    display: block;
+}
 .header{
     display: flex;
     flex-direction: row;

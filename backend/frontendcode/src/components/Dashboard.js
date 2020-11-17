@@ -1,9 +1,12 @@
 import React from 'react'
-import ExpenseList from './ExpenseList'
+/* import ExpenseList from './ExpenseList'*/
+import {Link} from 'react-router-dom';
 
 const DashBoardPage=()=>(
-    <div>
-    <p>This is my Dashboard page</p>
+    <div className="MyDashBoardContainer">
+    <Link to="/Men"><img className="MyDashBoardimg" src="/Men.jpg"></img></Link>
+    <br></br>
+    <Link to="/Women"><img className="MyDashBoardimg" src="/Women.jpg"></img></Link>
     </div>
 );
 
