@@ -35,7 +35,7 @@ class Header extends React.Component{
             :
             <div>
             <Button size="sm" variant="outline-primary" onClick={this.props.startLogout}>Logout</Button>{' '}
-            <Link to="/Cart"><Button variant="outline-primary"><span className="dot">{this.props.item.length}</span> Cart</Button>{' '}</Link> 
+            <Link to="/Cart"><Button size="sm" variant="outline-primary"><span className="dot">{this.props.item.length}</span> Cart</Button>{' '}</Link> 
             </div>
         }
             </div> 
